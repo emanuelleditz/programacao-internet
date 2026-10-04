@@ -1,0 +1,27 @@
+:root{
+    color-scheme: dark;
+
+    /* Base */
+    --cor-fundo-pagina: #2c4a50;   
+    --cor-fundo: #101827;          
+    --cor-card: #172236;           
+    --cor-superficie: #22304a;     
+    --cor-borda: #2e3d5a;
+
+    /* Texto */
+    --cor-texto: #eef2f8;          
+    --cor-texto-suave: #a7b2c6;
+    --cor-texto-escuro: #0b111d;   
+
+    /* Destaques */
+    --cor-primaria: #e3b45f;       
+    --cor-sucesso: #45cc8f;        
+    --cor-erro: #f07a6e;           
+    --cor-foco: rgba(227, 180, 95, 0.35);
+
+    /* Forma */
+    --borda-raio: 16px;
+    --sombra-card: 0 10px 30px rgba(0, 0, 0, 0.45);
+    --sombra-card-hover: 0 18px 44px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(227, 180, 95, 0.3);
+    --espaco: 1.5rem;
+}

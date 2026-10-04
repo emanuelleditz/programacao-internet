@@ -1,0 +1,66 @@
+<main class="pagina">
+  
+  <header class="cabecalho">
+      <h1>Meus Jogos</h1>
+      <h3>Emanuelle Ditz e Pedro Coutinho de Oliveira</h3>
+      <h3>RA: 60008902 e 60006242</h3>
+  </header>
+
+  <section class="painel">
+    <div class="formulario">
+      <div class="campo">
+        <label for="novoTitulo">Título</label>
+        <input id="novoTitulo" type="text" [(ngModel)]="novoTitulo" 
+                            placeholder="Ex: R.E.P.O."/>
+      </div>
+      <div class="campo">
+        <label for="novoGenero">Gênero</label>
+        <input id="novoGenero" type="text" [(ngModel)]="novoGenero" 
+                            placeholder="Ex: Ação"/>
+      </div>
+      <div class="campo">
+        <label for="novaNota">Nota</label>
+        <input id="novaNota" type="number" min="0" max="10" step="1" 
+                      [(ngModel)]="novaNota" placeholder="Ex: 5"/>
+      </div>
+      <div class="campo">
+      <label for="novoJogado">Jogado</label>
+      <div class="interruptor" [class.interruptor-ativo]="novoJogado">
+        <input id="novoJogado" type="checkbox" [(ngModel)]="novoJogado" />
+        <span class="interruptor-trilho"></span>
+        <span class="interruptor-texto">{{ novoJogado ? 'Já joguei' : 'Ainda não joguei' }}</span>
+      </div>
+    </div>
+      <button 
+        class="botao"
+        (click)="adicionarJogo()">Adicionar Jogo</button>
+    </div>
+  </section>
+
+  <section class="cards">
+    <article class="card" *ngFor="let jogo of jogos; let i = index" 
+            [class.card-jogado]="jogo.jogado">
+      <h2 class="card-titulo">{{ jogo.titulo }}</h2>
+      <p class="card-genero">{{ jogo.genero }}</p>
+
+      <span class="status status-jogado" *ngIf="jogo.jogado">Jogado</span>
+      <span class="status status-pendente" *ngIf="!jogo.jogado">Quero Jogar</span>
+
+      <div class="resultado" [class.resultado-negativo]="jogo.nota < 5">
+        <span class="resultado-rotulo">Nota</span>
+        <span class="resultado-valor">{{ jogo.nota }}</span> 
+      </div>
+
+      <div class="acoes">
+        <button 
+          class="botao botao-secundario"
+          (click)="alterarJogado(i)">{{ jogo.jogado ? 
+                'Marcar como não jogado': 'Marcar como jogado'}}</button>
+        <button 
+          class="botao botao-remover"
+          (click)="removerJogo(i)">Remover</button>
+      </div>
+    </article>
+  </section>
+  <p class="vazio" *ngIf="jogos.length === 0">Nenhum jogo cadastrado</p>
+</main>
